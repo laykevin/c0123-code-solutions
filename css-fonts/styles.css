@@ -1,4 +1,9 @@
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 3em;
+h1, h2 {
+  font-family: 'Roboto', 'open sans', sans-serif;
+}
+
+p {
+    font-family: 'open sans', 'Roboto', sans-serif;
+      line-height: 3em;
+    }
 }
