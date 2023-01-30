@@ -1,0 +1,151 @@
+p {
+  font-family: Avenir, sans-serif;
+  line-height: 200%;
+}
+
+.need-margin {
+  margin: 0 5%;
+}
+
+.row {
+  display: flex;
+}
+
+.column-head {
+  flex-basis: calc(100%/2);
+}
+
+.column-redirect {
+  flex-basis: calc(100%/10);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.first-image {
+  width: 100%;
+  margin: 75px 0;
+}
+
+.overlay {
+  background-color: rgba(0 0 0 / 25%);
+  padding: 5% 50% 10% 7%;
+}
+
+.third-row-center-text {
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.column-half {
+  flex-basis: calc(100%/2);
+  text-align: center;
+  padding: 50px 0;
+}
+
+.column-half-gray {
+  flex-basis: calc(100%/2);
+  padding-left: 5%;
+}
+
+.column-three-fourths {
+  flex-basis: calc(100% * 3 / 4);
+}
+
+.column-one-fourth {
+  flex-basis: calc(100%/4);
+}
+
+.gray {
+  background-color: rgb(82 83 81);
+  color: white;
+  padding: 5% 0;
+}
+
+.light-gray {
+  background-color: rgb(250 250 250);
+}
+
+button {
+  width: 150px;
+  height: 45px;
+  margin-top: 20px;
+  background-color: rgb(41 68 100);
+  color: white;
+  border-radius: 5%;
+  border-color: rgb(41 68 100);
+  font-family: Avenir, sans-serif;
+  border-style: none;
+}
+
+.need-padding {
+  padding: 20px 0;
+}
+
+.need-padding-last-row {
+  padding-bottom: 10px;
+}
+
+.column-head > img {
+  width: 20%;
+  margin-top: 40px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Tiempos Headline", sans-serif;
+  font-weight: lighter;
+}
+
+.column-three-fourths > h2 {
+  color: rgb(136 136 136);
+}
+
+.column-half-gray > img {
+  width: 20%;
+  padding-bottom: 25px;
+  margin-top: 25px;
+}
+
+.third-row-center-text > h1 {
+  color: rgb(136 136 136);
+}
+
+.column-redirect > button {
+  width: 100px;
+  height: 40px;
+  margin-top: 10px;
+  background-color: rgb(41 68 100);
+  color: white;
+  border-radius: 5%;
+  border-color: rgb(41 68 100);
+  font-family: Avenir, sans-serif;
+}
+
+.column-one-fourth > button {
+  width: 150px;
+  height: 45px;
+  margin-top: 30px;
+  background-color: rgb(41 68 100);
+  color: white;
+  border-radius: 5%;
+  border-color: rgb(41 68 100);
+  font-family: Avenir, sans-serif;
+  margin-left: 90px;
+}
+
+.img-back {
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+hr {
+  margin-bottom: 75px;
+}
+
+.need-bottom-margin {
+  margin-bottom: 75px;
+}
