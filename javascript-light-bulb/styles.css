@@ -1,0 +1,33 @@
+.bg-color {
+  background-color: rgb(254 249 241);
+}
+
+.bg-color-black {
+  background-color: rgb(17 17 17);
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+
+  /* background-color: rgb(254 249 241); */
+}
+
+.button {
+  padding: 10%;
+  border-radius: 50%;
+  background-color: rgb(250 234 132);
+  border-color: rgb(250 234 132);
+  border-style: none;
+}
+
+.button-black {
+  padding: 10%;
+  border-radius: 50%;
+  background-color: rgb(37 37 37);
+  border-color: rgb(37 37 37);
+  border-style: none;
+  box-shadow: 0 -20px black;
+}
