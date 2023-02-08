@@ -64,23 +64,23 @@ function renderPokemon(pokemon) {
   $pokemonCard.className = 'pokemon-card';
   $column.appendChild($pokemonCard);
   var $pikaPicture = document.createElement('img');
-  $pikaPicture.setAttribute('src', pokedex[i].imageUrl);
+  $pikaPicture.setAttribute('src', pokemon.imageUrl);
   $pokemonCard.appendChild($pikaPicture);
   var $pokemonCardText = document.createElement('div');
   $pokemonCardText.className = 'pokemon-card-text';
   $pokemonCard.appendChild($pokemonCardText);
   var $h2Pikachu = document.createElement('h2');
-  $h2Pikachu.textContent = pokedex[i].name;
+  $h2Pikachu.textContent = pokemon.name;
   $pokemonCardText.appendChild($h2Pikachu);
   var $h3Number = document.createElement('h3');
-  $h3Number.textContent = '#' + pokedex[i].number;
+  $h3Number.textContent = '#' + pokemon.number;
   $pokemonCardText.appendChild($h3Number);
   var $pText = document.createElement('p');
-  $pText.textContent = pokedex[i].description;
+  $pText.textContent = pokemon.description;
   $pokemonCardText.appendChild($pText);
   return $column;
 }
 var $row = document.querySelector('.row');
 for (var i = 0; i < pokedex.length; i++) {
-  $row.appendChild(renderPokemon(i));
+  $row.appendChild(renderPokemon(pokedex[i]));
 }
