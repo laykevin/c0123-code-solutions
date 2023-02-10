@@ -1,5 +1,8 @@
-p {
+body {
   font-family: monospace;
+}
+
+p {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +45,7 @@ span {
   flex-basis: calc(100%/3);
   background-color: whitesmoke;
   border-radius: 10px;
-  padding-bottom: 20px;
+  padding: 50px 0;
 }
 
 .hide {
@@ -57,4 +60,25 @@ button {
   color: white;
   border-style: none;
   margin: 0 50px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: 0.5s ease-out;
+}
+
+.row2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  inset: 0 0 400px 0;
+
+  /* height: 100vh; */
+}
+
+.hide2 {
+  display: none;
 }
