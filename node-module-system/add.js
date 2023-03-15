@@ -1,2 +1,1 @@
-const add = (first, second) => first + second;
-export default add;
+export default function add(a, b) { return a + b; }

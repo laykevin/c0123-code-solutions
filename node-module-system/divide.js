@@ -1,2 +1,1 @@
-const divide = (first, second) => first / second;
-export default divide;
+export default function divide(a, b) { return a / b; }

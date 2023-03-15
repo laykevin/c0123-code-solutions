@@ -1,2 +1,1 @@
-const multiply = (first, second) => first * second;
-export default multiply;
+export default function multiply(a, b) { return a * b; }

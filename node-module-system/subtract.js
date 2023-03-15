@@ -1,2 +1,1 @@
-const subtract = (first, second) => first - second;
-export default subtract;
+export default function subtract(a, b) { return a - b; }
