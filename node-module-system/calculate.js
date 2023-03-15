@@ -2,18 +2,25 @@ import add from './add.js';
 import subtract from './subtract.js';
 import multiply from './multiply.js';
 import divide from './divide.js';
-switch (process.argv[3]) {
+
+const a = Number(process.argv[2]);
+const b = Number(process.argv[4]);
+const operation = process.argv[3];
+let answer;
+
+switch (operation) {
   case 'plus':
-    console.log('result:', add(Number(process.argv[2]), Number(process.argv[4])));
+    answer = add(a, b);
     break;
   case 'minus':
-    console.log('result:', subtract(Number(process.argv[2]), Number(process.argv[4])));
+    answer = subtract(a, b);
     break;
   case 'over':
-    console.log('result:', divide(Number(process.argv[2]), Number(process.argv[4])));
+    answer = divide(a, b);
     break;
   case 'times':
-    console.log('result:', multiply(Number(process.argv[2]), Number(process.argv[4])));
+    answer = multiply(a, b);
     break;
-  default: console.log('invalid operation');
+  default: answer = 'invalid operation';
 }
+console.log('result:', answer);
