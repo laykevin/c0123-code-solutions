@@ -21,5 +21,5 @@ console.log('Value of overFive', overFive);
 const startWithE = names.filter((name) => name[0] === 'E');
 console.log('Value of startWithE', startWithE);
 
-const haveD = names.filter((name) => name.includes('D') || name.includes('d'));
+const haveD = names.filter((name) => name.toLowerCase().includes('d'));
 console.log('Value of haveD:', haveD);
