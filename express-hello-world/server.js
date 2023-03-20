@@ -1,6 +1,7 @@
 import express from 'express';
 
 const app = express();
+
 app.use((req, res) => {
   // eslint-disable-next-line no-console
   console.log(req.method);
