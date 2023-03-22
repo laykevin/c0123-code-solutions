@@ -1,20 +1,19 @@
 import express from 'express';
-import * as fs from 'node:fs';
 import * as fsPromises from 'node:fs/promises';
 
 // const fileData = fs.readFileSync('data.json', 'utf8');
 // const data = JSON.parse(fileData);
 // const notes = data.notes;
-// const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
+const writeFileDataJSON = (data) => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
 
-const getFunction = (req, res) => {
-  const fileData = fs.readFileSync('data.json', 'utf8');
+const getFunction = async (req, res) => {
+  const fileData = await fsPromises.readFile('data.json', 'utf8');
   const data = JSON.parse(fileData);
   res.send(Object.values(data.notes));
 };
 
-const getFunctionId = (req, res) => {
-  const fileData = fs.readFileSync('data.json', 'utf8');
+const getFunctionId = async (req, res) => {
+  const fileData = await fsPromises.readFile('data.json', 'utf8');
   const data = JSON.parse(fileData);
   const notes = data.notes;
   const id = Number(req.params.id);
@@ -28,20 +27,19 @@ const getFunctionId = (req, res) => {
 };
 
 const postFunction = async (req, res) => {
-  const fileData = fs.readFileSync('data.json', 'utf8');
+  const fileData = await fsPromises.readFile('data.json', 'utf8');
   const data = JSON.parse(fileData);
   const notes = data.notes;
   const body = req.body;
-  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
     if (!body.content) {
       res.status(400).send({ error: 'content is a required field' });
       return;
-    } else if (body.content) {
+    } else {
       notes[data.nextId] = body;
       notes[data.nextId].id = data.nextId;
       data.nextId++;
-      await writeFileDataJSON();
+      await writeFileDataJSON(data);
       res.status(201).send(body);
     }
   } catch (err) {
@@ -51,11 +49,10 @@ const postFunction = async (req, res) => {
 };
 
 const deleteFunction = async (req, res) => {
-  const fileData = fs.readFileSync('data.json', 'utf8');
+  const fileData = await fsPromises.readFile('data.json', 'utf8');
   const data = JSON.parse(fileData);
   const notes = data.notes;
   const id = Number(req.params.id);
-  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
     if (id < 1 || !Number.isInteger(id) || isNaN(id)) {
       res.status(400).send({ error: 'id must be a positive integer' });
@@ -63,7 +60,7 @@ const deleteFunction = async (req, res) => {
       res.status(404).send({ error: `cannot find note with id ${id}` });
     } else {
       delete notes[id];
-      await writeFileDataJSON();
+      await writeFileDataJSON(data);
       res.sendStatus(204);
     }
   } catch (err) {
@@ -73,12 +70,11 @@ const deleteFunction = async (req, res) => {
 };
 
 const putFunction = async (req, res) => {
-  const fileData = fs.readFileSync('data.json', 'utf8');
+  const fileData = await fsPromises.readFile('data.json', 'utf8');
   const data = JSON.parse(fileData);
   const notes = data.notes;
   const id = Number(req.params.id);
   const body = req.body;
-  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
     if (!body.content) {
       res.status(400).send({ error: 'content is a required field' });
@@ -93,7 +89,7 @@ const putFunction = async (req, res) => {
       return;
     } else if (notes[id]) {
       notes[id].content = body.content;
-      await writeFileDataJSON();
+      await writeFileDataJSON(data);
       res.status(200).send(notes[id]);
     }
   } catch (err) {
