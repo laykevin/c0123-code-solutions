@@ -2,14 +2,23 @@ import express from 'express';
 import * as fs from 'node:fs';
 import * as fsPromises from 'node:fs/promises';
 
-const fileData = fs.readFileSync('data.json', 'utf8');
-const data = JSON.parse(fileData);
-const notes = data.notes;
-const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
+// const fileData = fs.readFileSync('data.json', 'utf8');
+// const data = JSON.parse(fileData);
+// const notes = data.notes;
+// const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
 
 const getFunction = (req, res) => {
-  const id = req.params.id;
-  if (id < 1) {
+  const fileData = fs.readFileSync('data.json', 'utf8');
+  const data = JSON.parse(fileData);
+  res.send(Object.values(data.notes));
+};
+
+const getFunctionId = (req, res) => {
+  const fileData = fs.readFileSync('data.json', 'utf8');
+  const data = JSON.parse(fileData);
+  const notes = data.notes;
+  const id = Number(req.params.id);
+  if (id < 1 || !Number.isInteger(id) || isNaN(id)) {
     res.status(400).send({ error: 'id must be a positive integer' });
   } else if (!notes[id]) {
     res.status(404).send({ error: `cannot find note with id ${id}` });
@@ -19,7 +28,11 @@ const getFunction = (req, res) => {
 };
 
 const postFunction = async (req, res) => {
+  const fileData = fs.readFileSync('data.json', 'utf8');
+  const data = JSON.parse(fileData);
+  const notes = data.notes;
   const body = req.body;
+  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
     if (!body.content) {
       res.status(400).send({ error: 'content is a required field' });
@@ -38,9 +51,13 @@ const postFunction = async (req, res) => {
 };
 
 const deleteFunction = async (req, res) => {
-  const id = req.params.id;
+  const fileData = fs.readFileSync('data.json', 'utf8');
+  const data = JSON.parse(fileData);
+  const notes = data.notes;
+  const id = Number(req.params.id);
+  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
-    if (id < 1) {
+    if (id < 1 || !Number.isInteger(id) || isNaN(id)) {
       res.status(400).send({ error: 'id must be a positive integer' });
     } else if (!notes[id]) {
       res.status(404).send({ error: `cannot find note with id ${id}` });
@@ -56,14 +73,18 @@ const deleteFunction = async (req, res) => {
 };
 
 const putFunction = async (req, res) => {
-  const id = req.params.id;
+  const fileData = fs.readFileSync('data.json', 'utf8');
+  const data = JSON.parse(fileData);
+  const notes = data.notes;
+  const id = Number(req.params.id);
   const body = req.body;
+  const writeFileDataJSON = () => fsPromises.writeFile('data.json', JSON.stringify(data, null, 2));
   try {
     if (!body.content) {
       res.status(400).send({ error: 'content is a required field' });
       return;
     }
-    if (id < 1) {
+    if (id < 1 || !Number.isInteger(id) || isNaN(id)) {
       res.status(400).send({ error: 'id must be a poitive integer' });
       return;
     }
@@ -85,9 +106,9 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/api/notes', (req, res) => res.send(Object.values(data.notes)));
+app.get('/api/notes', getFunction);
 
-app.get('/api/notes/:id', getFunction);
+app.get('/api/notes/:id', getFunctionId);
 
 app.post('/api/notes', postFunction);
 
