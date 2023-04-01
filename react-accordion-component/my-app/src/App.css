@@ -54,4 +54,16 @@ p {
   width: 100%;
   border: 1px solid black;
   margin: 1px;
+  animation: collapse 1s ease;
+  overflow: hidden;
+}
+
+@keyframes collapse {
+  0% {
+    max-height: 0;
+  }
+
+  100% {
+    max-height: 200px;
+  }
 }
