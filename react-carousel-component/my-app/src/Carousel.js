@@ -36,14 +36,12 @@ export default function Carousel({ images }) {
 
 function Dot({ isActive, click }) {
   return (
-    isActive ?
-      <button style={{ marginTop: "2rem" }}>
-        <RxDotFilled style={{ fontSize: "4rem" }} />
-      </button>
-    :
-      <button onClick={click} style={{ marginTop: "2rem" }}>
-        <RxDot style={{ fontSize: "4rem" }} />
-      </button>
+    isActive ? <button style={{ marginTop: "2rem" }}>
+                 <RxDotFilled style={{ fontSize: "4rem" }} />
+               </button>
+             : <button onClick={click} style={{ marginTop: "2rem" }}>
+                 <RxDot style={{ fontSize: "4rem" }} />
+               </button>
   )
 }
 
