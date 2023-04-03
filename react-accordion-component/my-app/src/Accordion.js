@@ -11,10 +11,10 @@ export default function Accordion({ topics }) {
 
 function Panel({ topics, onClick, currentIndex }) {
   const topicsLists = topics.map((topic, index) => (
-  <>
+  <div key = { index }>
     <h2 onClick={() => onClick(index)}>{topic.title}</h2>
     {currentIndex === index && <p>{topic.text}</p>}
-  </>)
+  </div>)
   );
   return (
     <div>
