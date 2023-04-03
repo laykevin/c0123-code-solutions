@@ -19,7 +19,9 @@ export default function List() {
         setItems(data);
         setIsLoading(false);
       })
-      .catch((err) => setError(err));
+      .catch((err) => {
+        setError(err);
+        setIsLoading(false)});
     };
   //   (async () => {
   //   try {
