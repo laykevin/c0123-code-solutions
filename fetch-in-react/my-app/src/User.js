@@ -9,13 +9,13 @@ export default function User({ userId, onCancel }) {
 
   /* your code here (hint: useEffect) */
   useEffect(() => {
-    const getUsers = async () => {
+    const getUser = async () => {
       try {
-        const users = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-        if (!users.ok) {
-          throw new Error(`Network response was not OK. Status Code: ${users.status}`);
+        const user = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        if (!user.ok) {
+          throw new Error(`Network response was not OK. Status Code: ${user.status}`);
         }
-        const jsonData = await users.json();
+        const jsonData = await user.json();
         console.log(jsonData);
         setUser(jsonData);
         setIsLoading(false);
@@ -25,7 +25,7 @@ export default function User({ userId, onCancel }) {
         setIsLoading(false);
       }
     };
-    getUsers();
+    getUser();
   }, [userId])
   if (isLoading) {
     return <p>Loading...</p>;
