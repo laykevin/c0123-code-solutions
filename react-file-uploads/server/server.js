@@ -30,7 +30,7 @@ app.post('/api/uploads', uploadsMiddleware.single('image'), async (req, res, nex
     * - insert the "caption" and "url" into the "images" table
     * - respond with the inserted row data and the proper status code for inserting data
     */
-    const url = `/images${req.file.filename}`;
+    const url = `/images/${req.file.filename}`;
     const sql = `
       insert into "images" ("caption", "url")
       values ($1, $2)
