@@ -3,8 +3,7 @@ export default function countValues(stack) {
   if (stack.peek() === undefined) {
     return 0;
   }
-  while (stack.peek() !== undefined) {
-    stack.pop();
+  while (stack.pop() !== undefined) {
     count++;
   }
   return count;
